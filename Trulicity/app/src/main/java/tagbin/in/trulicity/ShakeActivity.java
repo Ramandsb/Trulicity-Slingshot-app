@@ -105,7 +105,7 @@ public class ShakeActivity extends AppCompatActivity implements ShakeDetector.On
 
             }
         });
-//       ShakeDetector.updateConfiguration(4, 2);
+       ShakeDetector.updateConfiguration(2, 2);
 
 
          fab = (FloatingActionButton) findViewById(R.id.fab);
