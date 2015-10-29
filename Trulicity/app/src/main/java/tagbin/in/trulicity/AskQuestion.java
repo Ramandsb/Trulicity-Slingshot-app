@@ -51,9 +51,13 @@ public class AskQuestion extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 answer= ed.getText().toString();
-                makeRequest(answer);
-                Intent i = new Intent(AskQuestion.this,ShakeActivity.class);
-                startActivity(i);
+                if (answer.equals("")){
+                    ed.setError("Empty answer");
+
+                }else {
+                    makeRequest(answer);
+
+                }
 
             }
         });
@@ -68,14 +72,9 @@ public class AskQuestion extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
 
-                        try {
-                                 response.getString("id");
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
+                        Intent i = new Intent(AskQuestion.this, ShakeActivity.class);
+                        startActivity(i);
 
-
-                        Log.v("writtem:%n %s", response.toString());
 
 
                         Toast.makeText(AskQuestion.this, response.toString(), Toast.LENGTH_LONG);

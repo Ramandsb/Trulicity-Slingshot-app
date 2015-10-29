@@ -44,7 +44,7 @@ import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class ShakeActivity extends AppCompatActivity implements ShakeDetector.OnShakeListener, SeekBar.OnSeekBarChangeListener, View.OnTouchListener {
+public class ShakeActivity extends AppCompatActivity {
 
     private static final String TAG1 = "TestingLog";
     SensorManager mSensorManager;
@@ -101,11 +101,12 @@ public class ShakeActivity extends AppCompatActivity implements ShakeDetector.On
             @Override
             public void OnShake() {
                 Log.d("shaked", "");
+                fab.setVisibility(View.VISIBLE);
                 makeRequest();
 
             }
         });
-       ShakeDetector.updateConfiguration(2, 2);
+//       ShakeDetector.updateConfiguration(2, 2);
 
 
          fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -121,14 +122,14 @@ public class ShakeActivity extends AppCompatActivity implements ShakeDetector.On
             }
         });
         fab.setVisibility(View.INVISIBLE);
-
-        setVal= (ImageButton) findViewById(R.id.setVals);
-        setVal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setVals();
-            }
-        });
+//
+//        setVal= (ImageButton) findViewById(R.id.setVals);
+//        setVal.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                setVals();
+//            }
+//        });
 
 
 //        new Timer().scheduleAtFixedRate(new TimerTask() {
@@ -140,113 +141,113 @@ public class ShakeActivity extends AppCompatActivity implements ShakeDetector.On
 //        }, 0,200);//put here time 1000 milliseconds=1 second
     }
 
-    private void setVals() {
+//    private void setVals() {
+//
+//        final Dialog sliderDialog = new Dialog(ShakeActivity.this);
+//        sliderDialog.setTitle("Set Values");
+//        sliderDialog.setContentView(R.layout.slider);
+//        mSensibility = (SeekBar) sliderDialog.findViewById(R.id.sensibility);
+//        mShakeNumber = (SeekBar) sliderDialog.findViewById(R.id.shake_number);
+//        mSensibilityLabel= (TextView) sliderDialog.findViewById(R.id.sensibility_label);
+//        mShakeNumberLabel= (TextView) sliderDialog.findViewById(R.id.shake_number_label);
+//        Button button= (Button) sliderDialog.findViewById(R.id.set);
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                sliderDialog.dismiss();
+//            }
+//        });
+//
+////            mStatus.setText(savedInstanceState.getString(STATUS));
+//        mSensibility.setProgress(shakeval);
+//        mShakeNumber.setProgress(shakenum);
+//
+//
+//        mSensibility.setOnSeekBarChangeListener(ShakeActivity.this);
+//        mSensibility.setOnTouchListener(ShakeActivity.this);
+//        mShakeNumber.setOnSeekBarChangeListener(ShakeActivity.this);
+//        mShakeNumber.setOnTouchListener(ShakeActivity.this);
+//        sliderDialog.show();
+//
+//    }
 
-        final Dialog sliderDialog = new Dialog(ShakeActivity.this);
-        sliderDialog.setTitle("Set Values");
-        sliderDialog.setContentView(R.layout.slider);
-        mSensibility = (SeekBar) sliderDialog.findViewById(R.id.sensibility);
-        mShakeNumber = (SeekBar) sliderDialog.findViewById(R.id.shake_number);
-        mSensibilityLabel= (TextView) sliderDialog.findViewById(R.id.sensibility_label);
-        mShakeNumberLabel= (TextView) sliderDialog.findViewById(R.id.shake_number_label);
-        Button button= (Button) sliderDialog.findViewById(R.id.set);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sliderDialog.dismiss();
-            }
-        });
+//
+//    @Override
+//    public void OnShake() {
+//        // This callback is triggered by the ShakeDetector. In a real implementation, you should
+//        // do here a real action.
+//        Log.d("shake", "detected");
+//        makeRequest();
+//
+////        Toast.makeText(this, getString(R.string.device_shaken), Toast.LENGTH_SHORT).show();
+//    }
 
-//            mStatus.setText(savedInstanceState.getString(STATUS));
-        mSensibility.setProgress(shakeval);
-        mShakeNumber.setProgress(shakenum);
-
-
-        mSensibility.setOnSeekBarChangeListener(ShakeActivity.this);
-        mSensibility.setOnTouchListener(ShakeActivity.this);
-        mShakeNumber.setOnSeekBarChangeListener(ShakeActivity.this);
-        mShakeNumber.setOnTouchListener(ShakeActivity.this);
-        sliderDialog.show();
-
-    }
-
-
-    @Override
-    public void OnShake() {
-        // This callback is triggered by the ShakeDetector. In a real implementation, you should
-        // do here a real action.
-        Log.d("shake", "detected");
-        makeRequest();
-
-//        Toast.makeText(this, getString(R.string.device_shaken), Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-        if (fromUser) {
-            if (seekBar.getId() == R.id.sensibility) {
-                float sensibility = (float) (progress + 10) / 10;
-                shakeval=progress;
-                Log.d("myprogess",""+sensibility+" "+progress+" "+mShakeNumber.getProgress());
-                ShakeDetector.updateConfiguration(sensibility, mShakeNumber.getProgress());
-                updateSeekBarLabel(mSensibilityLabel, String.format("%.1f", sensibility));
-                addStatusMessage(getString(R.string.update_sensibility, sensibility));
-            } else if (seekBar.getId() == R.id.shake_number) {
-                ShakeDetector.updateConfiguration((mSensibility.getProgress() + 10) / 10, progress);
-                updateSeekBarLabel(mShakeNumberLabel, String.valueOf(progress));
-                shakenum=progress;
-                addStatusMessage(getString(R.string.update_shake_number, progress));
-            }
-        }
-    }
-
-    @Override
-    public void onStartTrackingTouch(SeekBar seekBar) {
-        // Nothing to see here
-    }
-
-    @Override
-    public void onStopTrackingTouch(SeekBar seekBar) {
-        // Nothing to see here
-    }
-
-    @Override
-    public boolean onTouch(View view, MotionEvent motionEvent) {
-        int action = motionEvent.getAction();
-        switch (action) {
-            case MotionEvent.ACTION_DOWN:
-                // Disallow Drawer to intercept touch events.
-                view.getParent().requestDisallowInterceptTouchEvent(true);
-                break;
-            case MotionEvent.ACTION_UP:
-                // Allow Drawer to intercept touch events.
-                view.getParent().requestDisallowInterceptTouchEvent(false);
-                break;
-        }
-
-        // Handle seekbar touch events.
-        view.onTouchEvent(motionEvent);
-        return true;
-    }
-
-    private void addStatusMessage(String message) {
-        String date = new SimpleDateFormat("HH:mm:ss-SSS").format(new Date());
-        String status = String.format("\n[%s] %s", date, message);
-
-//        mStatus.append(status);
-        Log.d(TAG, status);
-    }
-
-    private void updateSeekBarLabel(TextView view, String textToAppend) {
-        String label = "";
-        if (view.getId() == R.id.sensibility_label) {
-            label = getString(R.string.label_sensibility, textToAppend);
-        }
-        if (view.getId() == R.id.shake_number_label) {
-            label = getString(R.string.label_shake_number, textToAppend);
-        }
-        view.setText(label);
-    }
+//    @Override
+//    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+//        if (fromUser) {
+//            if (seekBar.getId() == R.id.sensibility) {
+//                float sensibility = (float) (progress + 10) / 10;
+//                shakeval=progress;
+//                Log.d("myprogess",""+sensibility+" "+progress+" "+mShakeNumber.getProgress());
+//                ShakeDetector.updateConfiguration(sensibility, mShakeNumber.getProgress());
+//                updateSeekBarLabel(mSensibilityLabel, String.format("%.1f", sensibility));
+//                addStatusMessage(getString(R.string.update_sensibility, sensibility));
+//            } else if (seekBar.getId() == R.id.shake_number) {
+//                ShakeDetector.updateConfiguration((mSensibility.getProgress() + 10) / 10, progress);
+//                updateSeekBarLabel(mShakeNumberLabel, String.valueOf(progress));
+//                shakenum=progress;
+//                addStatusMessage(getString(R.string.update_shake_number, progress));
+//            }
+//        }
+//    }
+//
+//    @Override
+//    public void onStartTrackingTouch(SeekBar seekBar) {
+//        // Nothing to see here
+//    }
+//
+//    @Override
+//    public void onStopTrackingTouch(SeekBar seekBar) {
+//        // Nothing to see here
+//    }
+//
+//    @Override
+//    public boolean onTouch(View view, MotionEvent motionEvent) {
+//        int action = motionEvent.getAction();
+//        switch (action) {
+//            case MotionEvent.ACTION_DOWN:
+//                // Disallow Drawer to intercept touch events.
+//                view.getParent().requestDisallowInterceptTouchEvent(true);
+//                break;
+//            case MotionEvent.ACTION_UP:
+//                // Allow Drawer to intercept touch events.
+//                view.getParent().requestDisallowInterceptTouchEvent(false);
+//                break;
+//        }
+//
+//        // Handle seekbar touch events.
+//        view.onTouchEvent(motionEvent);
+//        return true;
+//    }
+//
+//    private void addStatusMessage(String message) {
+//        String date = new SimpleDateFormat("HH:mm:ss-SSS").format(new Date());
+//        String status = String.format("\n[%s] %s", date, message);
+//
+////        mStatus.append(status);
+//        Log.d(TAG, status);
+//    }
+//
+//    private void updateSeekBarLabel(TextView view, String textToAppend) {
+//        String label = "";
+//        if (view.getId() == R.id.sensibility_label) {
+//            label = getString(R.string.label_sensibility, textToAppend);
+//        }
+//        if (view.getId() == R.id.shake_number_label) {
+//            label = getString(R.string.label_shake_number, textToAppend);
+//        }
+//        view.setText(label);
+//    }
 
 
     @Override

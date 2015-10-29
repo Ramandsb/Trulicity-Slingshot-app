@@ -51,6 +51,7 @@
             android:hint="Your Answer"
             android:inputType="textPersonName"
             android:textColor="#ffffff"
+            android:maxLength="160"
             android:maxLines="1"
             android:singleLine="true" />
 
