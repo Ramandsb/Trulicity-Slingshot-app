@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#573393"
+    tools:context="tagbin.in.trulicity.RegistrationPage">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="1">
+        <LinearLayout
+            android:layout_margin="20dp"
+            android:layout_width="160dp"
+            android:layout_marginTop="20dp"
+            android:layout_height="60dp"
+            android:background="@drawable/logolillypurpleresized"
+            android:layout_gravity="right" />
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            app:theme="@style/TextAppearance.AppCompat.Inverse"
+            app:hintTextAppearance="@style/TextAppearance.AppCompat.Inverse">
+
+            <EditText
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:hint="Name"
+                android:inputType="textPersonName"
+                android:textColor="#ffffff"
+                android:textSize="30sp"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColorHint="#ffffff" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:theme="@style/TextAppearance.AppCompat.Inverse"
+            app:hintTextAppearance="@style/TextAppearance.AppCompat.Inverse">
+            >
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:textSize="30sp"
+                android:hint="@string/prompt_email"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:shadowColor="#ffffff"
+                android:singleLine="true"
+                android:textColor="#ffffff"
+                />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:translationZ="10dp"
+            app:theme="@style/TextAppearance.AppCompat.Inverse"
+            app:hintTextAppearance="@style/TextAppearance.AppCompat.Inverse">
+
+            <EditText
+                android:id="@+id/phoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:hint="Mobile No."
+                android:minLines="1"
+                android:maxLength="10"
+                android:textSize="30sp"
+                android:textColor="#ffffff"
+                android:textColorHint="#ffffff"
+                android:inputType="phone"
+                android:maxLines="1"
+                android:singleLine="true" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="60dp"
+
+            android:src="@drawable/arror" />
+
+        <LinearLayout
+            android:layout_width="190dp"
+            android:layout_height="100dp"
+            android:background="@drawable/purlogores"
+            android:layout_gravity="center" />
+
+    </LinearLayout>
+
+</RelativeLayout>

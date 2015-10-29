@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">Trulicity</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="title_activity_take_selfie">TakeSelfie</string>
+    <string name="serverUrl">"http://192.168.1.13/trulicity-webapp/action/action.php"</string>
+    <string name="title_activity_see_pic">SeePic</string>
+    <string name="title_activity_shake">ShakeActivity</string>
+    <string name="title_activity_check_rotation">CheckRotation</string>
+    <string name="title_activity_ask_question">AskQuestion</string>
+    <string name="title_activity_disclaimer">DisclaimerActivity</string>
+
+    <string name="sensibility">Sensibility</string>
+    <string name="shake_number">Number of shakes to trigger</string>
+    <string name="label_sensibility">Sensibility: %sG</string>
+    <string name="label_shake_number">Number of shakes: %s</string>
+    <string name="shake_detector_created">Shake detector created and started!</string>
+    <string name="shake_detector_error">ERROR: Cannot create and start shake detector!</string>
+    <string name="shake_detector_restarted">Listener restarted successfully.</string>
+    <string name="shake_detector_stopped">Listener stopped.</string>
+    <string name="shake_detector_destroyed">Listener Destroyed.</string>
+    <string name="shake_detected">Shake detected. Send toast</string>
+    <string name="device_shaken">Device shaken!</string>
+    <string name="update_sensibility">Update \"sensibility\" to: %.1fG</string>
+    <string name="update_shake_number">Update \"number of shakes to trigger\" to: %d</string>
+</resources>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="tagbin.in.trulicity.ShakeActivity"
+    tools:showIn="@layout/activity_shake">
+
+    <LinearLayout
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:background="@drawable/logolillypurpleresized"
+        android:layout_gravity="right"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
+
+
+    <TextView
+        android:text="TARGET, AIM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#ffffff"
+        android:textSize="40dp"
+        android:textStyle="bold"
+
+        android:id="@+id/textView6"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="63dp" />
+    <TextView
+        android:text="LAUNCH"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#ffffff"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        android:id="@+id/textView4"
+        android:layout_below="@+id/textView6"
+        android:layout_centerHorizontal="true" />
+
+
+
+
+
+
+
+
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="@drawable/slingresized"
+        android:id="@+id/imageView"
+        android:layout_above="@+id/fab"
+        android:layout_alignStart="@+id/textView4"
+        android:layout_marginBottom="61dp" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:src="@drawable/home"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/imageView"
+        android:layout_toEndOf="@+id/imageView" />
+
+    <LinearLayout
+        android:layout_width="170dp"
+        android:layout_height="100dp"
+        android:background="@drawable/purlogores"
+        android:layout_gravity="center"
+
+
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/imageView" />
+
+    <ImageButton
+        android:id="@+id/setVals"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:background="@color/colorBack"
+        android:src="@drawable/settings"/>
+
+</RelativeLayout>
