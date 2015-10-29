@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class ShakeDetector implements SensorEventListener {
 
-    private static final float DEFAULT_THRESHOLD_ACCELERATION = 4.0f;
+    private static final float DEFAULT_THRESHOLD_ACCELERATION = 2.0f;
     private static final int DEFAULT_THRESHOLD_SHAKE_NUMBER = 2;
     private static final int INTERVAL = 200;
 

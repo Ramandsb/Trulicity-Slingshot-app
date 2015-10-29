@@ -8,10 +8,13 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -24,6 +27,7 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,6 +35,8 @@ import java.util.Map;
 public class AskQuestion extends AppCompatActivity {
     EditText ed;
     String answer;
+    TextView remain;
+    int i =0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +48,26 @@ public class AskQuestion extends AppCompatActivity {
 //        PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "My Tag");
 //        wl.acquire();
         ed= (EditText) findViewById(R.id.ans);
+        remain= (TextView) findViewById(R.id.remain);
         ed.setHintTextColor(getResources().getColor(R.color.white));
+        ed.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                remain.setText(String.valueOf(60-s.length()));
+
+            }
+        });
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
